@@ -1,0 +1,1 @@
+user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Quotes::Shakespeare.hamlet_quote, email: Faker::Internet.email, age: rand(18..99), city_id: City.all.sample) }

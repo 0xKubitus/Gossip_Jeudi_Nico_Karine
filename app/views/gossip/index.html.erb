@@ -1,0 +1,37 @@
+<h1>Bienvenue à toi, voyageur !</h1>
+<p>Je te vois venir...</p>
+<h3>Toi aussi tu veux <%= link_to 'lancer une nouvelle rumeur', new_gossip_path %> ?</h3> <!-- insérer lien vers "gossip/new" ici -->
+<h5><u>Voici la liste des potins du coin :</u></h5>
+
+<div>
+
+
+  <% @gossips.each.with_index do |gossip,i|%>
+
+    <div class="card my-3">
+
+      <div class="card-header">
+        Gossip n°<%= i+1 %>
+      </div>
+
+      <div class="container-fluid row">
+
+        <div class="card-body col-8">        
+          <h5 class="card-title">Titre : <%= gossip.title %></h5>
+          <p class="card-text">Auteur : <%= gossip.user.first_name%></p>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+          <p><%= link_to 'Ouvrir ce Gossip', show_gossip_path(gossip) %></p>
+          <%= form_tag gossip_path(gossip.id), method: "delete", style: "display: inline" do %>
+            
+        </div>
+
+        <div><%= submit_tag "Supprimer cette rumeur" %><%end%></div>
+
+      </div>
+
+    </div>
+
+  <%end%>
+
+</div>
